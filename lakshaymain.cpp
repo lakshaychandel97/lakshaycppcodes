@@ -1905,3 +1905,533 @@
 
 //     return 0;
 // }
+
+
+
+
+// #include <iostream>
+// #include <fstream>
+// #include <string>
+// using namespace std;
+// class Student {
+// public:
+//     int id;
+//     string name;
+//     float marks;
+//     void input() {
+//         cout << "Enter ID: ";
+//         cin >> id;
+//         cin.ignore();
+
+//         cout << "Enter Name: ";
+//         getline(cin, name);
+
+//         cout << "Enter Marks: ";
+//         cin >> marks;
+//     }
+//     void display() {
+//         cout << "ID: " << id
+//              << ", Name: " << name
+//              << ", Marks: " << marks << endl;
+//     }
+// };
+// // write using delimiter |
+// void addStudent(const Student &s) {
+//     ofstream file("students.txt", ios::app);
+//     if (!file) {
+//         cout << "Error opening file!" << endl;
+//         return;
+//     }
+//     file << s.id << "|" << s.name << "|" << s.marks << endl;
+// }
+// // read using delimiter |
+// void readStudents() {
+//     Student s;
+//     ifstream file("students.txt");
+//     if (!file) {
+//         cout << "Error opening file!" << endl;
+//         return;
+//     
+//     while (file >> s.id) {
+//         file.ignore(); // skip '|'
+//         getline(file, s.name, '|'); // read full name
+//         file >> s.marks;
+//         file.ignore(); // skip newline
+
+//         s.display();
+//     }
+// }
+// int main() {
+//     Student s;
+//     int choice;
+
+//     do {
+//         cout << "\n1. Add Student\n2. Display Students\n3. Exit\n";
+//         cout << "Enter choice: ";
+//         cin >> choice;
+
+//         switch (choice) {
+//         case 1:
+//             s.input();
+//             addStudent(s);
+//             break;
+//         case 2:
+//             readStudents();
+//             break;
+//         case 3:
+//             cout << "Exiting..." << endl;
+//             break;
+
+//         default:
+//             cout << "Invalid choice!" << endl;
+//         }
+
+//     } while (choice != 3);
+
+//     return 0;
+// }
+
+
+
+// #include <iostream>
+// #include <vector>
+// #include <fstream>
+// using namespace std;
+
+// class Student {
+// public:
+//     int id;
+//     string name;
+//     float marks;
+
+//     void input() {
+//         cout << "Enter ID: ";
+//         cin >> id;
+//         cin.ignore();
+
+//         cout << "Enter Name: ";
+//         getline(cin, name);
+
+//         cout << "Enter Marks: ";
+//         cin >> marks;
+//     }
+
+//     void display() {
+//         cout << "ID: " << id 
+//              << ", Name: " << name 
+//              << ", Marks: " << marks << endl;
+//     }
+// };
+
+// vector<Student> students;
+
+// // Save to file
+// void saveToFile() {
+//     ofstream file("students.txt");
+//     for (auto &s : students) {
+//         file << s.id << endl;
+//         file << s.name << endl;
+//         file << s.marks << endl;
+//     }
+//     file.close();
+//     cout << "Data saved successfully!\n";
+// }
+
+// // Load from file
+// void loadFromFile() {
+//     ifstream file("students.txt");
+//     if (!file) return;
+
+//     Student s;
+//     while (file >> s.id) {
+//         file.ignore();
+//         getline(file, s.name);
+//         file >> s.marks;
+//         students.push_back(s);
+//     }
+//     file.close();
+// }
+
+// // Add student
+// void addStudent() {
+//     Student s;
+//     s.input();
+//     students.push_back(s);
+// }
+
+// // Display students
+// void displayStudents() {
+//     for (auto &s : students) {
+//         s.display();
+//     }
+// }
+
+// int main() {
+//     loadFromFile();
+
+//     int choice;
+//     do {
+//         cout << "\n1. Add Student\n2. Display\n3. Save\n0. Exit\nChoice: ";
+//         cin >> choice;
+
+//         switch (choice) {
+//             case 1: addStudent(); break;
+//             case 2: displayStudents(); break;
+//             case 3: saveToFile(); break;
+//         }
+
+//     } while (choice != 0);
+
+//     return 0;
+// }
+
+
+
+
+// #include <iostream>
+// #include <vector>
+// #include <fstream>
+// using namespace std;
+
+// class Employee {
+// public:
+//     int id;
+//     string name;
+//     float salary;
+
+//     void input() {
+//         cout << "Enter ID: ";
+//         cin >> id;
+//         cin.ignore();
+
+//         cout << "Enter Name: ";
+//         getline(cin, name);
+
+//         cout << "Enter Salary: ";
+//         cin >> salary;
+//     }
+
+//     void display() {
+//         cout << "ID: " << id 
+//              << ", Name: " << name 
+//              << ", Salary: " << salary << endl;
+//     }
+// };
+
+// vector<Employee> employees;
+
+// // Save to file
+// void saveToFile() {
+//     ofstream file("employees.txt");
+//     for (auto &e : employees) {
+//         file << e.id << endl;
+//         file << e.name << endl;
+//         file << e.salary << endl;
+//     }
+//     file.close();
+//     cout << "Data saved successfully!\n";
+// }
+
+// // Load from file
+// void loadFromFile() {
+//     ifstream file("employees.txt");
+//     if (!file) return;
+
+//     Employee e;
+//     while (file >> e.id) {
+//         file.ignore();
+//         getline(file, e.name);
+//         file >> e.salary;
+//         employees.push_back(e);
+//     }
+//     file.close();
+// }
+
+// // Add employee
+// void addEmployee() {
+//     Employee e;
+//     e.input();
+//     employees.push_back(e);
+// }
+
+// // Display employees
+// void displayEmployees() {
+//     for (auto &e : employees) {
+//         e.display();
+//     }
+// }
+
+// int main() {
+//     loadFromFile();
+
+//     int choice;
+//     do {
+//         cout << "\n1. Add Employee\n2. Display\n3. Save\n0. Exit\nChoice: ";
+//         cin >> choice;
+
+//         switch (choice) {
+//             case 1: addEmployee(); break;
+//             case 2: displayEmployees(); break;
+//             case 3: saveToFile(); break;
+//         }
+
+//     } while (choice != 0);
+
+//     return 0;
+// }
+
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// struct S { int id; string name; };
+// vector<S> v;
+
+// int main() {
+//     int n, x; cin >> n;
+//     for(int i=0;i<n;i++) cin >> v[i].id >> v[i].name;
+
+//     cin >> x;
+//     for(auto s:v)
+//         if(s.id==x) cout << s.name;
+// }
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// struct E { int id; string name; };
+// vector<E> v;
+
+// int main() {
+//     int n,x; cin>>n;
+//     for(int i=0;i<n;i++){
+//         E e; cin>>e.id>>e.name;
+//         v.push_back(e);
+//     }
+//     cin>>x;
+
+//     for(int i=0;i<v.size();i++)
+//         if(v[i].id==x) v.erase(v.begin()+i);
+
+//     for(auto e:v)
+//         cout<<e.id<<" "<<e.name<<endl;
+// }
+
+
+
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     ofstream f("data.txt");
+//     for(int i=1;i<=5;i++)
+//         f << i << " ";
+// }
+
+
+// #include <iostream>
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     ifstream f("data.txt");
+//     int x;
+//     while(f >> x)
+//         cout << x << " ";
+// }
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// struct E { int id; float sal; };
+// vector<E> v;
+
+// int main() {
+//     int n,x; cin>>n;
+//     for(int i=0;i<n;i++){
+//         E e; cin>>e.id>>e.sal;
+//         v.push_back(e);
+//     }
+//     cin>>x;
+
+//     for(auto &e:v)
+//         if(e.id==x) e.sal+=1000;
+
+//     for(auto e:v)
+//         cout<<e.id<<" "<<e.sal<<endl;
+// }
+
+
+
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     ofstream f("data.txt", ios::app);
+//     f << "New Data\n";
+// }
+
+
+// #include <iostream>
+// #include <vector>
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     vector<string> v = {"A","B","C"};
+//     ofstream f("names.txt");
+
+//     for(auto s:v)
+//         f << s << endl;
+// }
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     vector<int> v = {45, 78, 90, 60};
+//     int mx = v[0];
+
+//     for (int x : v)
+//         if (x > mx) mx = x;
+
+//     cout << mx;
+// }
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     vector<int> v = {1,2,3,4};
+
+//     for (int i = v.size()-1; i >= 0; i--)
+//         cout << v[i] << " ";
+// }
+
+
+
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     ifstream in("a.txt");
+//     ofstream out("b.txt");
+//     char ch;
+
+//     while (in.get(ch))
+//         out.put(ch);
+// }
+
+
+// #include <iostream>
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     ifstream f("a.txt");
+//     string s;
+//     int c=0;
+
+//     while (getline(f, s)) c++;
+//     cout << c;
+// }
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     vector<int> v = {1,2,3,4,5,6};
+
+//     for (int x : v)
+//         if (x % 2 == 0)
+//             cout << x << " ";
+// }
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     vector<int> a = {1,2}, b = {3,4};
+
+//     a.insert(a.end(), b.begin(), b.end());
+
+//     for (int x : a)
+//         cout << x << " ";
+// }
+
+
+// #include <fstream>
+// using namespace std;
+
+// struct S { int id; };
+
+// int main() {
+//     S s = {101};
+//     ofstream f("data.txt");
+//     f << s.id;
+// }
+
+
+// #include <iostream>
+// #include <fstream>
+// using namespace std;
+
+// int main() {
+//     ifstream f("data.txt");
+//     string w;
+
+//     while (f >> w)
+//         cout << w << endl;
+// }
+
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     vector<int> v = {1,2,3,4};
+//     int sum = 0;
+
+//     for (int x : v)
+//         sum += x;
+
+//     cout << sum;
+// }
+
+
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int main() {
+//     vector<int> v = {1,2,3,4};
+//     int x = 3, flag = 0;
+
+//     for (int i : v)
+//         if (i == x) flag = 1;
+
+//     cout << flag;
+// }
+
